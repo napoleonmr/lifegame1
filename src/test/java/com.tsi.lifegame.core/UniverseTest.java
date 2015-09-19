@@ -58,7 +58,7 @@ The rules continue to be applied repeatedly to create further generations.
 			         };
 		Universe u = new Universe(c);
 		int n =  u.getLifeNeighbourNumber(1,1);
-		assertTrue(n==7);
+		assertTrue(n==8);
 	 }
 
 	// At each step in time, 
@@ -79,6 +79,6 @@ The rules continue to be applied repeatedly to create further generations.
 
 		boolean s = u.isAlive(1,1);
 
-		assertTrue(s);		
+		assertFalse(s);		
 	}				
 }
