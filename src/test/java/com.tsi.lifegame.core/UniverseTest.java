@@ -16,7 +16,7 @@ Any dead cell with exactly three live neighbours becomes a live cell, as if by r
 
 The initial pattern constitutes the seed of the system. 
 The first generation is created by applying the above rules simultaneously to every cell
- in the seedâ€”births and deaths occur simultaneously, and the discrete moment at which this happens 
+ in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens 
 is sometimes called a tick (in other words, each generation is a pure function of the preceding one). 
 The rules continue to be applied repeatedly to create further generations.
 */
@@ -45,15 +45,12 @@ The rules continue to be applied repeatedly to create further generations.
 		Universe u = new Universe(c);
 		Boolean state = u.isAlive(1,1);
 		assertFalse(state);
-	}
+	}	
 
-
-	
-
-	 // Every cell interacts with its eight neighbours, 
-	 //which are the cells that are horizontally, vertically, or diagonally adjacent.
-	 @Test
-	 public void cellinteractsWithItsNeighbours(){
+	// Every cell interacts with its eight neighbours, 
+	//which are the cells that are horizontally, vertically, or diagonally adjacent.
+	@Test
+	public void cellinteractsWithItsNeighbours(){
 		boolean[][] c = { 
 					{true, true, true},
 					{true, true, true},
@@ -63,4 +60,25 @@ The rules continue to be applied repeatedly to create further generations.
 		int n =  u.getLifeNeighbourNumber(1,1);
 		assertTrue(n==8);
 	 }
-} 
+
+	// At each step in time, 
+	//the following transitions occur:
+	//Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+	@Test
+	public void cellWithFewerThanTwoLiveNeighboursDies(){
+		boolean[][] c = { 
+					{false, false, false},
+					{false, true, false},
+					{false, true, false},
+			         };
+
+
+		Universe u = new Universe(c);
+		
+		u.tick();
+
+		boolean s = u.isAlive(1,1);
+
+		assertTrue(s);		
+	}				
+}
