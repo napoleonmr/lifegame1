@@ -61,6 +61,6 @@ The rules continue to be applied repeatedly to create further generations.
 			         };
 		Universe u = new Universe(c);
 		int n =  u.getLifeNeighbourNumber(1,1);
-		assertTrue(n==8);
+		assertTrue(n==7);
 	 }
 } 
